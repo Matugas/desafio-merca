@@ -1,9 +1,10 @@
 const dbConnection = require("../utils/DbConnection");
 const Validators = require("../utils/Validators");
+const EnumClient = require("../utils/Client.enum");
 
 class ContactServiceVarejao {
   static async create(contacts) {
-    const pgClient = await dbConnection.getPgSqlConnection("varejao");
+    const pgClient = await dbConnection.getPgSqlConnection(EnumClient.VAREJAO);
     try {
       pgClient.query("BEGIN");
 

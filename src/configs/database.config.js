@@ -1,4 +1,5 @@
 require("dotenv").config();
+const EnumClient = require("../utils/Client.enum");
 
 module.exports = {
   desafioMerca: {
@@ -8,14 +9,14 @@ module.exports = {
     user: "admin",
     password: process.env.DESAFIO_MERCAFACIL_DB_PASSWORD,
   },
-  macapa: {
+  [EnumClient.MACAPA]: {
     host: "localhost",
     port: 3306,
     database: "admin",
     user: "admin",
     password: process.env.MACAPA_DB_PASSWORD
   },
-  varejao: {
+  [EnumClient.VAREJAO]: {
     host: "localhost",
     port: 5432,
     database: "admin",

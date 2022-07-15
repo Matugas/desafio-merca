@@ -1,9 +1,10 @@
 const dbConnection = require("../utils/DbConnection");
 const Validators = require("../utils/Validators");
+const EnumClient = require("../utils/Client.enum");
 
 class ContactServiceMacapa {
   static async create(contacts) {
-    const mysqlConnection = await dbConnection.getMySqlConnection("macapa");
+    const mysqlConnection = await dbConnection.getMySqlConnection(EnumClient.MACAPA);
     try {
       mysqlConnection.beginTransaction();
 
