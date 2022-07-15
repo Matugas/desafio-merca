@@ -1,12 +1,14 @@
 class Validators {
   // Macapá
   static validateCellPhoneMacapa(cellphone) {
-    if (!cellphone || cellphone.length > 20 || cellphone.length < 12) throw new Error("Unsupported cell phone format");
+    if (!cellphone) throw new Error("Unsupported cell phone format");
+    let formatted = cellphone.replace(/\D/g, "");
+    if (formatted.length > 13 || formatted.length < 12) throw new Error("Unsupported cell phone format");
 
-    if (cellphone.length == 13) {
-      return `+${cellphone.substring(0, 2)} (${cellphone.substring(2, 4)}) ${cellphone.substring(4, 9)}-${cellphone.substring(9)}`;
+    if (formatted.length == 13) {
+      return `+${formatted.substring(0, 2)} (${formatted.substring(2, 4)}) ${formatted.substring(4, 9)}-${formatted.substring(9)}`;
     } else {
-      return `+${cellphone.substring(0, 2)} (${cellphone.substring(2, 4)}) ${cellphone.substring(4, 8)}-${cellphone.substring(8)}`;
+      return `+${formatted.substring(0, 2)} (${formatted.substring(2, 4)}) ${formatted.substring(4, 8)}-${formatted.substring(8)}`;
     }
   }
 
@@ -17,6 +19,7 @@ class Validators {
 
   // Varejão
   static validateCellPhoneVarejao(cellphone) {
+    if (!cellphone) throw new Error("Unsupported cell phone format");
     let formatted = cellphone.replace(/\D/g, "");
     if (formatted.length > 13 || formatted.length < 12) throw new Error("Unsupported cell phone format");
     return formatted;
