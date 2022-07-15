@@ -7,7 +7,7 @@ class AuthController {
       const { login, password } = req.body;
       if (!login || !password) return res.status(400).json({ error: "Login and Password are required" });
 
-      const pgClient = await dbConnection.getPgSqlConnection("desafioMerca");
+      const pgClient = await dbConnection.getPgSqlClient("desafioMerca");
 
       const queryResponse = await pgClient.query(
         `

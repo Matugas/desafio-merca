@@ -4,7 +4,7 @@ const EnumClient = require("../utils/Client.enum");
 
 class ContactServiceVarejao {
   static async create(contacts) {
-    const pgClient = await dbConnection.getPgSqlConnection(EnumClient.VAREJAO);
+    const pgClient = await dbConnection.getPgSqlClient(EnumClient.VAREJAO);
     try {
       pgClient.query("BEGIN");
 

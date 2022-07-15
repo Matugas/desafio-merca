@@ -22,7 +22,7 @@ class DbConnection {
     return this.connections[client];
   }
 
-  static async getPgSqlConnection(client) {
+  static async getPgSqlClient(client) {
     if (this.connections[client] != null) return this.connections[client];
 
     const { host, database, user, password } = dbConfig[client];
