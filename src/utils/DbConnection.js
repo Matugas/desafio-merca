@@ -3,9 +3,6 @@ const mysql = require("mysql2");
 const dbConfig = require("../configs/database.config");
 
 class DbConnection {
-  static mySqlConn = null;
-  static pgSqlConn = null;
-
   static connections = {};
 
   static async getMySqlConnection(client) {
