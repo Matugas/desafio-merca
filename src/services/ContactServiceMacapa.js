@@ -17,11 +17,23 @@ class ContactServiceMacapa {
       }
 
       mysqlConnection.commit();
-    } catch(error) {
+    } catch (error) {
       mysqlConnection.rollback();
       console.error(error);
       throw error;
     }
+  }
+
+  static async get(id) {
+    const mysqlConnection = await dbConnection.getMySqlConnection(EnumClient.MACAPA);
+    const result = await mysqlConnection.promise().query(`SELECT * FROM contacts WHERE id=?`, [id]);
+    return result[0][0];
+  }
+
+  static async getAll() {
+    const mysqlConnection = await dbConnection.getMySqlConnection(EnumClient.MACAPA);
+    const result = await mysqlConnection.promise().query(`SELECT * FROM contacts`);
+    return result[0];
   }
 }
 

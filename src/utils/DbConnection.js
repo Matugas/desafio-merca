@@ -8,13 +8,7 @@ class DbConnection {
   static async getMySqlConnection(client) {
     if (this.connections[client] != null) return this.connections[client];
 
-    const { host, database, user, password } = dbConfig[client];
-    this.connections[client] = mysql.createConnection({
-      host: host,
-      database: database,
-      user: user,
-      password: password,
-    });
+    this.connections[client] = mysql.createConnection(dbConfig[client].stringConnection);
 
     return this.connections[client];
   }
@@ -22,13 +16,7 @@ class DbConnection {
   static async getPgSqlClient(client) {
     if (this.connections[client] != null) return this.connections[client];
 
-    const { host, database, user, password } = dbConfig[client];
-    this.connections[client] = new Client({
-      host: host,
-      database: database,
-      user: user,
-      password: password,
-    });
+    this.connections[client] = new Client(dbConfig[client].stringConnection);
 
     await this.connections[client].connect();
     return this.connections[client];

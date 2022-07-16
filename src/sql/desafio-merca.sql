@@ -1,7 +1,7 @@
 -- Criar banco no postgres com o nome "desafio-merca"
 
 -- Cria tabela de clientes
-CREATE TABLE client (
+CREATE TABLE clients (
 	id serial PRIMARY KEY,
 	login VARCHAR ( 50 ) NOT NULL,
 	password VARCHAR ( 100 ) NOT NULL

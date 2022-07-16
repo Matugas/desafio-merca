@@ -17,11 +17,23 @@ class ContactServiceVarejao {
       }
 
       pgClient.query("COMMIT");
-    } catch(error) {
+    } catch (error) {
       pgClient.query("ROLLBACK");
       console.error(error);
       throw error;
     }
+  }
+
+  static async get(id) {
+    const pgClient = await dbConnection.getPgSqlClient(EnumClient.VAREJAO);
+    const result = await pgClient.query(`SELECT * FROM contacts WHERE id=$1`, [id]);
+    return result.rows[0];
+  }
+
+  static async getAll() {
+    const pgClient = await dbConnection.getPgSqlClient(EnumClient.VAREJAO);
+    const result = await pgClient.query(`SELECT * FROM contacts`);
+    return result.rows;
   }
 }
 
